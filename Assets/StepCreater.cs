@@ -72,6 +72,8 @@ public class StepCreater : EditorWindow {
                     obj.name = prefab.name + count++;
                     if (parent) obj.transform.parent = parent.transform;
                     Undo.RegisterCreatedObjectUndo(obj, "Step");
+                    
+                    gameLogic.SetGameStep(obj);
  
                     pos.z += intervalZ;
                 }
