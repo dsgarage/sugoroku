@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum StepStatus
+public enum StepStatus
 {
     stay　= 1,
     Rest = 2,
@@ -23,6 +23,16 @@ public class Step : MonoBehaviour
     {
         stepValu += diceNo;
         Debug.Log(gameObject.name + " StepValu:" + stepValu);
+    }
+
+    public int GetStep()
+    {
+        return stepValu;
+    }
+
+    public StepStatus GetStepStatus()
+    {
+        return status;
     }
     
 }
