@@ -21,7 +21,9 @@ public class GameLogic : MonoBehaviour
         foreach (var VARIABLE in playerStep)
         {
             Debug.Log(VARIABLE.gameObject.name);
+            
         }
+
     }
 
     public void Init()
@@ -32,7 +34,11 @@ public class GameLogic : MonoBehaviour
         foreach (var VARIABLE in playerStep)
         {
             VARIABLE.Init();
+            VARIABLE.gameObject.transform.position =
+                stepObject[playerStep[turn].GetStep()].gameObject.transform.position;
         }
+        
+        
     }
 
     void TurnChack()
