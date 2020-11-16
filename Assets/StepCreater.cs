@@ -6,6 +6,7 @@ public class StepCreater : EditorWindow {
     
     private GameObject parent;
     private GameObject prefab;
+    private GameLogic gameLogic;
     private int numX = 1;
     private int numY = 1;
     private int numZ = 1;
@@ -30,6 +31,7 @@ public class StepCreater : EditorWindow {
         try {
             parent = EditorGUILayout.ObjectField("Parent", parent, typeof(GameObject), true) as GameObject;
             prefab = EditorGUILayout.ObjectField("Prefab", prefab, typeof(GameObject), true) as GameObject;
+            gameLogic = EditorGUILayout.ObjectField("GameLogic", gameLogic, typeof(GameLogic), true) as GameLogic;
  
             GUILayout.Label("X : ", EditorStyles.boldLabel);
             numX = int.Parse(EditorGUILayout.TextField("num", numX.ToString()));
@@ -70,6 +72,8 @@ public class StepCreater : EditorWindow {
                     obj.name = prefab.name + count++;
                     if (parent) obj.transform.parent = parent.transform;
                     Undo.RegisterCreatedObjectUndo(obj, "Step");
+                    
+                    gameLogic.SetGameStep(obj);
  
                     pos.z += intervalZ;
                 }
