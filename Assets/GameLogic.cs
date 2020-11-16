@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -13,7 +14,7 @@ public class GameLogic : MonoBehaviour
     [SerializeField] private int turn;
     [SerializeField] private int playerNumber;
     [SerializeField] private bool SetDiceRoll = false;
-
+    [SerializeField] private GameObject[] stepObject ;
     private void Start()
     {
         Init();
@@ -72,5 +73,16 @@ public class GameLogic : MonoBehaviour
             TurnChack();
             SetDiceRoll = false;
         }
+    }
+
+    public void SetGameSteps(GameObject[] addStepObject)
+    {
+        stepObject = addStepObject;
+    }
+
+    public void SetGameStep(GameObject addStep)
+    {
+        Array.Resize(ref stepObject,stepObject.Length +1);
+        stepObject[stepObject.Length - 1] = addStep;
     }
 }
