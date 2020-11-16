@@ -12,7 +12,7 @@ public class StepCreater : EditorWindow {
     private float intervalY = 1;
     private float intervalZ = 1;
  
-    [MenuItem("GameObject/Create Other/Create Buoys")]
+    [MenuItem("GameObject/Create Other/Create Steps")]
     static void Init() {
         EditorWindow.GetWindow<StepCreater>(true, "Create Buoys");
     }
