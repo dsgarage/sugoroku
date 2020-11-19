@@ -41,6 +41,20 @@ public class GameLogic : MonoBehaviour
         
     }
 
+    void ChackStep(int stepNum)
+    {
+        
+        foreach (var VARIABLE in playerStep)
+        {
+            
+            if (VARIABLE.GetStep() == stepNum)
+            {
+                VARIABLE.gameObject.transform.position += Vector3.left;
+            }
+        }
+    }
+    
+
     void TurnChack()
     {
         if (playerStep.Count == turn)
@@ -75,11 +89,15 @@ public class GameLogic : MonoBehaviour
     {
         if (SetDiceRoll)
         {
+            
             playerStep[turn].SetStep(dice.GetDiceNumber());
             playerStep[turn].gameObject.transform.position =
                 stepObject[playerStep[turn].GetStep()].gameObject.transform.position;
+            
             TurnChack();
             SetDiceRoll = false;
+        //    ChackStep(playerStep[turn].GetStep());
+
         }
     }
 
