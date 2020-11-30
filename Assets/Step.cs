@@ -8,6 +8,7 @@ public enum StepStatus
     Rest = 2,
 }
 
+[RequireComponent((typeof(Player)))]
 public class Step : MonoBehaviour
 {
     [SerializeField] private int stepValu = 0;
