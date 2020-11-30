@@ -1,6 +1,12 @@
 # すごろくUnity
 すごろく作るぞー！
 
+## SetUp
+* StepクラスがついたGameObjectをScene上に配置
+* StepCreaterでマス目を生成
+* PlayerとするGameObjectには、必ずCinemachineのVertualCameraとPlayerクラスがAddされている
+
+
 ## 2020/11/9
 Dice.cs<br>
 Step.cs<br>
