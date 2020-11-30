@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera playerVC;
     [SerializeField] private int playerNo = 0;
-    
+    public int PlayerNo => playerNo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +27,10 @@ public class Player : MonoBehaviour
         {
             playerNo = no;
         }
+    }
+
+    public int GetPlayerNo()
+    {
+        return playerNo;
     }
 }
