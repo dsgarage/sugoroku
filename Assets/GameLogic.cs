@@ -10,7 +10,8 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     [SerializeField] private Dice dice;
-    [SerializeField] private List<Step> playerStep = new List<Step>();
+    [SerializeField] private List<Step> playerSteps = new List<Step>();
+    [SerializeField] private List<Player> playerList = new List<Player>();
     [SerializeField] private int turn;
     [SerializeField] private int playerNumber;
     [SerializeField] private bool SetDiceRoll = false;
@@ -18,7 +19,7 @@ public class GameLogic : MonoBehaviour
     private void Start()
     {
         Init();
-        foreach (var VARIABLE in playerStep)
+        foreach (var VARIABLE in playerSteps)
         {
             Debug.Log(VARIABLE.gameObject.name);
             
@@ -29,13 +30,14 @@ public class GameLogic : MonoBehaviour
     public void Init()
     {
         turn = 0;　/// ターン数
-        playerNumber = playerStep.Count; /// プレイ人数
+        playerNumber = playerSteps.Count; /// プレイ人数
         SetDiceRoll = true;
-        foreach (var VARIABLE in playerStep)
+        
+        foreach (var VARIABLE in playerSteps)
         {
             VARIABLE.Init();
             VARIABLE.gameObject.transform.position =
-                stepObject[playerStep[turn].GetStep()].gameObject.transform.position;
+                stepObject[playerSteps[turn].GetStep()].gameObject.transform.position;
         }
         
         
@@ -44,7 +46,7 @@ public class GameLogic : MonoBehaviour
     void ChackStep(int stepNum)
     {
         
-        foreach (var VARIABLE in playerStep)
+        foreach (var VARIABLE in playerSteps)
         {
             
             if (VARIABLE.GetStep() == stepNum)
@@ -57,7 +59,7 @@ public class GameLogic : MonoBehaviour
 
     void TurnChack()
     {
-        if (playerStep.Count == turn)
+        if (playerSteps.Count == turn)
         {
             turn = 0;
         }
@@ -68,7 +70,7 @@ public class GameLogic : MonoBehaviour
         if (!SetDiceRoll)
         {
             Debug.Log("======SetTurn=====");
-            if (turn + 1 == playerStep.Count)
+            if (turn + 1 == playerSteps.Count)
             {
                 turn = 0;
             }
@@ -90,9 +92,9 @@ public class GameLogic : MonoBehaviour
         if (SetDiceRoll)
         {
             
-            playerStep[turn].SetStep(dice.GetDiceNumber());
-            playerStep[turn].gameObject.transform.position =
-                stepObject[playerStep[turn].GetStep()].gameObject.transform.position;
+            playerSteps[turn].SetStep(dice.GetDiceNumber());
+            playerSteps[turn].gameObject.transform.position =
+                stepObject[playerSteps[turn].GetStep()].gameObject.transform.position;
             
             TurnChack();
             SetDiceRoll = false;
@@ -101,6 +103,10 @@ public class GameLogic : MonoBehaviour
         }
     }
 
+    public void SetPlayer(Player player)
+    {
+        playerList.Add(player);
+    }
     public void SetGameSteps(GameObject[] addStepObject)
     {
         stepObject = addStepObject;
