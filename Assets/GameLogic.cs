@@ -38,12 +38,8 @@ public class GameLogic : MonoBehaviour
             VARIABLE.Init();
             VARIABLE.gameObject.transform.position =
                 stepObject[playerSteps[turn].GetStep()].gameObject.transform.position;
-        }
-
-        foreach (var VARIABLE in playerSteps)
-        {
-            var playerCompornent = VARIABLE.gameObject.GetComponent<Player>();
-            SetPlayer(playerCompornent);
+            
+            SetPlayer(VARIABLE.gameObject.GetComponent<Player>());
         }
         
         

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class Step : MonoBehaviour
 {
     [SerializeField] private int stepValu = 0;
     [SerializeField] private StepStatus status = StepStatus.stay;
+
 
     public void Init()
     {
