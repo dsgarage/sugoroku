@@ -8,10 +8,17 @@ public static class GameSystemFacerd
     }
     private static CinemachineBlendListCamera _cinemachineBlendListCamera;
 
-    public static void SetBlendListCamera(CinemachineBlendListCamera cinemachineBlendListCamera)
+    public static bool SetBlendListCamera(CinemachineBlendListCamera cinemachineBlendListCamera)
     {
-        _cinemachineBlendListCamera = cinemachineBlendListCamera;
+        if (_cinemachineBlendListCamera)
+        {
+            return false;
+        }
+        else
+        {
+            _cinemachineBlendListCamera = cinemachineBlendListCamera;
+            return true;
+        }
     }
 
 }
- 
